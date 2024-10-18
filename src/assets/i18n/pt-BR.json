@@ -1,0 +1,7 @@
+{
+  "home": {
+    "title": "Início",
+    "welcomeMessage": "Olá Administrador! Seja Bem-Vindo ao site de consultas da Deps",
+    "descriptionMessage": "As consultas poderão ser feitas via CPF e CNPJ"
+  }
+}
