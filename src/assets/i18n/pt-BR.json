@@ -1,7 +1,19 @@
 {
+  "sidebar_menu": {
+    "administrator": "ADMINISTRADOR",
+    "dashboard": "DASHBOARD",
+    "credit_policy": "POLÍTICA DE CRÉDITO",
+    "consults": "CONSULTAS",
+    "invoices": "MINHAS FATURAS",
+    "account": "MINHA CONTA CORRENTE",
+    "messages": "MENSAGENS",
+    "administration": "ADMINISTRAÇÃO",
+    "help": "AJUDA",
+    "logout": "SAIR"
+  },
   "home": {
     "title": "Início",
-    "welcomeMessage": "Olá Administrador! Seja Bem-Vindo ao site de consultas da Deps",
-    "descriptionMessage": "As consultas poderão ser feitas via CPF e CNPJ"
+    "welcome_message": "Olá Administrador! Seja Bem-Vindo ao site de consultas da Deps",
+    "description_message": "As consultas poderão ser feitas via CPF e CNPJ"
   }
 }
