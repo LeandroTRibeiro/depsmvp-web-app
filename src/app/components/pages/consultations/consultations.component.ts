@@ -1,17 +1,17 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator} from "@angular/material/paginator";
-import {MatSort} from "@angular/material/sort";
-import {MatTable} from "@angular/material/table";
-import {Consultation} from "../../../models/consultation.model";
-import {ConsultationsDatasource} from "./consultations-datasource";
-import {TranslateService} from "@ngx-translate/core";
+import { MatPaginator } from "@angular/material/paginator";
+import { MatSort } from "@angular/material/sort";
+import { MatTable } from "@angular/material/table";
+import { Consultation } from "../../../models/consultation.model";
+import { ConsultationsDatasource } from "./consultations-datasource";
+import { TranslateService } from "@ngx-translate/core";
 
 @Component({
   selector: 'app-consultations',
   templateUrl: './consultations.component.html',
   styleUrls: ['./consultations.component.scss']
 })
-export class ConsultationsComponent implements AfterViewInit , OnInit {
+export class ConsultationsComponent implements AfterViewInit, OnInit {
   displayedColumns: string[] = [];
   headers: any = {};
 
@@ -21,14 +21,10 @@ export class ConsultationsComponent implements AfterViewInit , OnInit {
 
   dataSource: ConsultationsDatasource;
 
-  constructor(private _translate: TranslateService) {
+  constructor(
+    private _translate: TranslateService
+  ) {
     this.dataSource = new ConsultationsDatasource();
-  }
-
-  ngAfterViewInit(): void {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-    this.table.dataSource = this.dataSource;
   }
 
   ngOnInit(): void {
@@ -36,5 +32,11 @@ export class ConsultationsComponent implements AfterViewInit , OnInit {
       this.headers = translations;
       this.displayedColumns = Object.keys(this.headers);
     });
+  }
+
+  ngAfterViewInit(): void {
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+    this.table.dataSource = this.dataSource;
   }
 }
