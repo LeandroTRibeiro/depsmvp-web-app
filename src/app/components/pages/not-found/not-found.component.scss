@@ -1,0 +1,16 @@
+main {
+  padding: 20px;
+
+  mat-card {
+    padding: 20px;
+
+    mat-card-content {
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 26px;
+      font-weight: bold;
+    }
+  }
+}
