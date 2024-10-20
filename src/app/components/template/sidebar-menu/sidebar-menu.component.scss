@@ -1,0 +1,33 @@
+.sidebar-container {
+  height: 100dvh;
+
+  .sidebar-menu {
+    background: var(--primary-color);
+    padding: 20px;
+    width: 300px;
+
+    @media (max-width: 678px) {
+      width: 100%;
+    }
+
+    .menu-toogle {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+    }
+
+    a {
+      height: 46px;
+    }
+
+    span {
+      font-size: 14px;
+      color: var(--secondary-color);
+    }
+    .mat-icon {
+      margin-inline: 10px;
+      color: var(--secondary-color);
+    }
+
+  }
+}
