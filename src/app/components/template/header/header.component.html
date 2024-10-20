@@ -1,0 +1,21 @@
+<mat-toolbar class="mat-elevation-z4">
+  <button mat-icon-button>
+    <mat-icon>
+      home
+    </mat-icon>
+  </button>
+  <span>
+    Inicio
+  </span>
+  <ng-container *ngIf="isHandset">
+    <button
+      mat-icon-button
+      (click)="handleIsMenuOpen()"
+      class="menu-button"
+    >
+      <mat-icon>
+        menu
+      </mat-icon>
+    </button>
+  </ng-container>
+</mat-toolbar>
