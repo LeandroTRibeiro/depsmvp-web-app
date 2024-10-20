@@ -3,7 +3,7 @@
     "administrator": "ADMINISTRADOR",
     "dashboard": "DASHBOARD",
     "credit_policy": "POLÍTICA DE CRÉDITO",
-    "consults": "CONSULTAS",
+    "consultations": "CONSULTAS",
     "invoices": "MINHAS FATURAS",
     "account": "MINHA CONTA CORRENTE",
     "messages": "MENSAGENS",
@@ -11,9 +11,35 @@
     "help": "AJUDA",
     "logout": "SAIR"
   },
+  "header": {
+    "home": "Início",
+    "administrator": "Administrador",
+    "dashboard": "Dashboard",
+    "credit_policy": "Política de crédito",
+    "consultations": "Consultas",
+    "invoices": "Minhas faturas",
+    "account": "Minha conta corrente",
+    "messages": "Mensagens",
+    "administration": "Administração",
+    "help": "Ajuda",
+    "logout": "Sair"
+  },
   "home": {
     "title": "Início",
     "welcome_message": "Olá Administrador! Seja Bem-Vindo ao site de consultas da Deps",
     "description_message": "As consultas poderão ser feitas via CPF e CNPJ"
+  },
+  "consultations": {
+    "title": "Histórico de consultas",
+    "consultation_table": {
+      "headers": {
+        "user": "USUÁRIO",
+        "consultation_date": "DATA DA CONSULTA",
+        "consultation_type": "TIPO",
+        "consultation_code": "CÓDIGO",
+        "consultation_date_reference": "DATA DA REFERÊNCIA",
+        "consultation_interval": "INTERVALO"
+      }
+    }
   }
 }
