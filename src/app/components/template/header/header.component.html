@@ -1,11 +1,11 @@
 <mat-toolbar class="mat-elevation-z4">
   <button mat-icon-button>
     <mat-icon>
-      home
+      {{ icon }}
     </mat-icon>
   </button>
   <span>
-    Inicio
+    {{ titleKey | translate }}
   </span>
   <ng-container *ngIf="isHandset">
     <button
