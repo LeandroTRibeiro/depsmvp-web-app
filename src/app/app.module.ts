@@ -7,6 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {HttpLoaderFactory} from "./translate-loader";
+import { HeaderComponent } from './components/template/header/header.component';
+import { SidebarMenuComponent } from './components/template/sidebar-menu/sidebar-menu.component';
+import { HomeComponent } from './components/pages/home/home.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
 import {MatIconModule} from "@angular/material/icon";
@@ -17,6 +20,8 @@ import {MatCardModule} from "@angular/material/card";
 @NgModule({
   declarations: [
     AppComponent
+    AppComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +34,6 @@ import {MatCardModule} from "@angular/material/card";
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
     }),
     MatSidenavModule,
     MatListModule,
