@@ -22,6 +22,7 @@ import {MatCardModule} from "@angular/material/card";
   declarations: [
     AppComponent,
     HeaderComponent,
+    HomeComponent,
     NotFoundComponent
   ],
   imports: [
