@@ -17,6 +17,10 @@ import { NotFoundComponent } from './components/pages/not-found/not-found.compon
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
 import {MatCardModule} from "@angular/material/card";
+import { ConsultationsComponent } from './components/pages/consultations/consultations.component';
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatTableModule} from "@angular/material/table";
+import {MatSortModule} from "@angular/material/sort";
 
 @NgModule({
   declarations: [
@@ -24,7 +28,8 @@ import {MatCardModule} from "@angular/material/card";
     HeaderComponent,
     SidebarMenuComponent,
     HomeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ConsultationsComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +48,10 @@ import {MatCardModule} from "@angular/material/card";
     MatIconModule,
     MatToolbarModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]
