@@ -1,4 +1,11 @@
-.menu-button {
-  position: fixed;
-  right: 0;
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  div {
+    display: flex;
+    align-items: center;
+  }
+
 }

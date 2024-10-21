@@ -1,13 +1,15 @@
 <mat-toolbar class="mat-elevation-z4">
-  <button mat-icon-button>
-    <mat-icon>
-      {{ icon }}
-    </mat-icon>
-  </button>
-  <span>
-    {{ titleKey | translate }}
-  </span>
-  <ng-container *ngIf="isHandset">
+    <div>
+      <button mat-icon-button>
+        <mat-icon>
+          {{ icon }}
+        </mat-icon>
+      </button>
+      <span>
+        {{ titleKey | translate }}
+      </span>
+    </div>
+    <ng-container *ngIf="isHandset">
     <button
       mat-icon-button
       (click)="handleIsMenuOpen()"
@@ -17,5 +19,5 @@
         menu
       </mat-icon>
     </button>
-  </ng-container>
+    </ng-container>
 </mat-toolbar>
