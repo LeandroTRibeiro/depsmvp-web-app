@@ -21,6 +21,7 @@ import { ConsultationsComponent } from './components/pages/consultations/consult
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatTableModule} from "@angular/material/table";
 import {MatSortModule} from "@angular/material/sort";
+import { AutoScrollDirective } from './directives/auto-scroll.directive';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {MatSortModule} from "@angular/material/sort";
     SidebarMenuComponent,
     HomeComponent,
     NotFoundComponent,
-    ConsultationsComponent
+    ConsultationsComponent,
+    AutoScrollDirective
   ],
   imports: [
     BrowserModule,
