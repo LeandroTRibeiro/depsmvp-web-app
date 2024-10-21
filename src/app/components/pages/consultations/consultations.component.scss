@@ -4,9 +4,35 @@ main {
   mat-card {
     padding: 20px;
 
-    table {
-      width: 100%;
-      margin-top: 10px;
+    mat-card-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    mat-card-content {
+      scroll-behavior: smooth;
+
+      @media (max-width: 678px) {
+        overflow-x: scroll;
+      }
+
+      table {
+        width: 100%;
+        margin-top: 10px;
+
+        @media (max-width: 678px) {
+          width: 200vw;
+        }
+      }
+
+      .new-consult-button-container {
+        width: 100%;
+        padding-block: 20px;
+        display: flex;
+        justify-content: end;
+      }
     }
   }
 }
+
