@@ -30,7 +30,7 @@ export class ConsultationsComponent implements AfterViewInit, OnInit {
   ngOnInit(): void {
     this._translate.get('consultations.consultation_table.headers').subscribe(translations => {
       this.headers = translations;
-      this.displayedColumns = Object.keys(this.headers);
+      this.displayedColumns = [...Object.keys(this.headers), "action"];
     });
   }
 
