@@ -22,6 +22,17 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatTableModule} from "@angular/material/table";
 import {MatSortModule} from "@angular/material/sort";
 import { AutoScrollDirective } from './directives/auto-scroll.directive';
+import { ConsultationFormDialogComponent } from './components/dialogs/consultation-form-dialog/consultation-form-dialog.component';
+import {
+  MAT_DIALOG_DEFAULT_OPTIONS,
+  MatDialogModule
+} from "@angular/material/dialog";
+import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import { MatNativeDateModule } from '@angular/material/core';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { ConsultationCustomIntervalComponent } from './components/dialogs/consultation-custom-interval/consultation-custom-interval.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +42,9 @@ import { AutoScrollDirective } from './directives/auto-scroll.directive';
     HomeComponent,
     NotFoundComponent,
     ConsultationsComponent,
-    AutoScrollDirective
+    AutoScrollDirective,
+    ConsultationFormDialogComponent,
+    ConsultationCustomIntervalComponent
   ],
   imports: [
     BrowserModule,
@@ -53,9 +66,25 @@ import { AutoScrollDirective } from './directives/auto-scroll.directive';
     MatCardModule,
     MatPaginatorModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    MatDialogModule,
+    MatInputModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue:
+        {
+          hasBackdrop: true,
+          backdropClass: 'custom-backdrop'
+        }
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
