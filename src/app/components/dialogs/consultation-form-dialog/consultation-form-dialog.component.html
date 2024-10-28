@@ -1,0 +1,70 @@
+<form mat-dialog-content>
+  <h1>Nova Consulta</h1>
+  <div class="input-container">
+    <mat-form-field>
+      <mat-label>{{ "consultation_form_dialog.select_type.label" | translate }}</mat-label>
+      <mat-select
+        [(ngModel)]="selectedType"
+        required
+        name="type"
+      >
+        <mat-option *ngFor="let type of consultationType" [value]="type.value">
+          {{ type.labelKey | translate }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>{{ "consultation_form_dialog.date_picker.label" | translate }}</mat-label>
+      <input matInput [matDatepicker]="picker" required>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <div class="input-container">
+    <mat-form-field>
+      <mat-label>{{ "consultation_form_dialog.input_cpf.label" | translate }}</mat-label>
+        <input
+          type="number"
+          matInput
+          [formControl]="cpfFormControl"
+          [errorStateMatcher]="matcher"
+          [placeholder]="'consultation_form_dialog.input_cpf.placeholder' | translate"
+          required
+        >
+        <mat-hint>{{ "consultation_form_dialog.input_cpf.hint" | translate }}</mat-hint>
+        <mat-error
+          *ngIf="
+          cpfFormControl.hasError('cpf') &&
+          !cpfFormControl.hasError('required')"
+        >
+          {{ "consultation_form_dialog.input_cpf.invalid_error" | translate }}
+        </mat-error>
+        <mat-error
+          *ngIf="cpfFormControl.hasError('required')"
+        >
+          {{ "consultation_form_dialog.input_cpf.required_error" | translate }}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>{{ "consultation_form_dialog.select_interval.label" | translate }}</mat-label>
+        <mat-select
+          [(ngModel)]="selectedInterval"
+          required
+          name="interval"
+          (selectionChange)="onIntervalChange()"
+        >
+          <mat-option *ngFor="let interval of consultationInterval" [value]="interval.value">
+            {{ interval.labelKey | translate }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="submit-buttons">
+      <button mat-raised-button>
+        {{ "consultation_form_dialog.actions_buttons.cancel" | translate }}
+      </button>
+      <button mat-raised-button>
+        {{ "consultation_form_dialog.actions_buttons.submit" | translate }}
+      </button>
+    </div>
+</form>
