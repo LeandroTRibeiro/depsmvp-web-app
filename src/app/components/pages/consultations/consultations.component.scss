@@ -26,6 +26,12 @@ main {
         }
       }
 
+    }
+
+    mat-card-actions {
+      display: flex;
+      flex-direction: column;
+
       .new-consult-button-container {
         width: 100%;
         padding-block: 20px;
