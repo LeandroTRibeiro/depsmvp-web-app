@@ -40,6 +40,41 @@
         "consultation_date_reference": "DATA DA REFERÊNCIA",
         "consultation_interval": "INTERVALO"
       }
+    },
+    "submit_button": "Nova Consulta"
+  },
+  "consultation_form_dialog": {
+    "select_type": {
+      "label": "Consulta por:",
+      "cpf": "CPF",
+      "cnpj": "CNPJ"
+    },
+    "date_picker": {
+      "label": "Data referência:"
+    },
+    "input_cpf": {
+      "label": "CPF",
+      "hint": "Somente números",
+      "placeholder": "Ex. 00000000000",
+      "invalid_error": "Entre com um CPF válido!",
+      "required_error": "CPF é necessário!"
+    },
+    "input_cnpj": {
+      "label": "CNPJ",
+      "hint": "Somente números",
+      "placeholder": "EX. 00000000000000",
+      "invalid_error": "Entre com um CNPJ válido!",
+      "required_error": "CPF é necessário!"
+    },
+    "select_interval": {
+      "label": "Pesquisar pelos últimos:",
+      "three_months": "3 meses",
+      "four_months": "4 meses",
+      "custom": "Personalizar"
+    },
+    "actions_buttons": {
+      "submit": "Buscar",
+      "cancel": "Cancelar"
     }
   }
 }
