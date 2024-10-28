@@ -1,9 +1,12 @@
-﻿export interface Consultation {
+﻿import {User} from "./user.model";
+
+export interface Consultation {
   id: number;
-  user: string;
-  consultation_date: string;
-  consultation_type: string;
-  consultation_code: string;
-  consultation_date_reference: string;
-  consultation_interval: string;
+  user: User;
+  userId: number;
+  consultationDate: string;
+  consultationType: string;
+  consultationCode: string;
+  consultationDateReference: string;
+  consultationInterval: string;
 }
