@@ -13,32 +13,32 @@
 
         <ng-container matColumnDef="user">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ headers.user | translate }} </th>
-          <td mat-cell *matCellDef="let row">{{ row.user }}</td>
+          <td mat-cell *matCellDef="let row">{{ row.user.name }}</td>
         </ng-container>
 
         <ng-container matColumnDef="consultation_date">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ headers.consultation_date | translate }} </th>
-          <td mat-cell *matCellDef="let row">{{ row.consultation_date }}</td>
+          <td mat-cell *matCellDef="let row">{{ row.consultationDate | date: 'dd/mm/yyyy' }}</td>
         </ng-container>
 
         <ng-container matColumnDef="consultation_type">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ headers.consultation_type | translate }} </th>
-          <td mat-cell *matCellDef="let row">{{ row.consultation_type }}</td>
+          <td mat-cell *matCellDef="let row">{{ row.consultationType }}</td>
         </ng-container>
 
         <ng-container matColumnDef="consultation_code">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ headers.consultation_code | translate }} </th>
-          <td mat-cell *matCellDef="let row">{{ row.consultation_code }}</td>
+          <td mat-cell *matCellDef="let row">{{ row.consultationCode }}</td>
         </ng-container>
 
         <ng-container matColumnDef="consultation_date_reference">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ headers.consultation_date_reference | translate }} </th>
-          <td mat-cell *matCellDef="let row">{{ row.consultation_date_reference }}</td>
+          <td mat-cell *matCellDef="let row">{{ row.consultationDateReference | date: 'dd/mm/yyyy' }}</td>
         </ng-container>
 
         <ng-container matColumnDef="consultation_interval">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ headers.consultation_interval | translate }} </th>
-          <td mat-cell *matCellDef="let row">{{ row.consultation_interval }}</td>
+          <td mat-cell *matCellDef="let row">{{ (row.consultationInterval / 30) | number: '1.0-0' }} meses</td>
         </ng-container>
 
         <ng-container matColumnDef="action">
@@ -56,20 +56,26 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
 
+    </mat-card-content>
+    <mat-card-actions>
       <mat-paginator
         #paginator
-        [length]="dataSource.data.length"
+        [length]="dataSource.totalItems"
         [pageIndex]="0"
         [pageSize]="10"
-        [pageSizeOptions]="[5, 10, 20]"
+        [pageSizeOptions]="[5, 10, 20, 40, 80]"
         aria-label="Select page"
       >
       </mat-paginator>
       <div class="new-consult-button-container">
-        <button mat-raised-button color="primary">
-          Nova Consulta
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="openDialog()"
+        >
+          {{ "consultations.submit_button" | translate }}
         </button>
       </div>
-    </mat-card-content>
+    </mat-card-actions>
   </mat-card>
 </main>
