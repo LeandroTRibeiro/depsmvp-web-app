@@ -9,3 +9,9 @@ html, body {
   --primary-color: #242C54;
   --secondary-color: #ffffff;
 }
+
+.custom-backdrop{
+  backdrop-filter: blur(2px);
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
