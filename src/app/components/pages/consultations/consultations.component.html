@@ -18,7 +18,7 @@
 
         <ng-container matColumnDef="consultation_date">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ headers.consultation_date | translate }} </th>
-          <td mat-cell *matCellDef="let row">{{ row.consultationDate | date: 'dd/mm/yyyy' }}</td>
+          <td mat-cell *matCellDef="let row">{{ row.consultationDate | date: 'dd/MM/yyyy' }}</td>
         </ng-container>
 
         <ng-container matColumnDef="consultation_type">
@@ -28,23 +28,23 @@
 
         <ng-container matColumnDef="consultation_code">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ headers.consultation_code | translate }} </th>
-          <td mat-cell *matCellDef="let row">{{ row.consultationCode }}</td>
+          <td mat-cell *matCellDef="let row">{{ row.consultationCode | cpfCnpjFormat }}</td>
         </ng-container>
 
         <ng-container matColumnDef="consultation_date_reference">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ headers.consultation_date_reference | translate }} </th>
-          <td mat-cell *matCellDef="let row">{{ row.consultationDateReference | date: 'dd/mm/yyyy' }}</td>
+          <td mat-cell *matCellDef="let row">{{ row.consultationDateReference | date: 'dd/MM/yyyy' }}</td>
         </ng-container>
 
         <ng-container matColumnDef="consultation_interval">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ headers.consultation_interval | translate }} </th>
-          <td mat-cell *matCellDef="let row">{{ (row.consultationInterval / 30) | number: '1.0-0' }} meses</td>
+          <td mat-cell *matCellDef="let row">{{ row.consultationInterval | daysToReadableFormat }}</td>
         </ng-container>
 
         <ng-container matColumnDef="action">
           <th mat-header-cell *matHeaderCellDef></th>
           <td mat-cell *matCellDef="let row">
-            <a routerLink="/consultation/id" title="Visualizar">
+            <a (click)="redirectBasedConsultationType(row.consultationType, row.id)" title="Visualizar">
               <mat-icon color="primary">
                 visibility
               </mat-icon>

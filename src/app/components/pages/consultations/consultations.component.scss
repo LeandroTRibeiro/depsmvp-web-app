@@ -2,9 +2,9 @@ main {
   padding: 20px;
 
   mat-card {
-    padding: 20px;
 
     mat-card-title {
+      padding: 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -20,6 +20,20 @@ main {
       table {
         width: 100%;
         margin-top: 10px;
+
+        tr:hover {
+          background: var(--accent-color);
+          transition: all 0.4s ease-in-out;
+        }
+
+        a {
+          cursor: pointer;
+        }
+
+        mat-icon:hover {
+          transform: scale(1.15);
+          transition: all 0.3s ease-in-out;
+        }
 
         @media (max-width: 678px) {
           width: 200vw;

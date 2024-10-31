@@ -8,9 +8,7 @@ import { TranslateService } from "@ngx-translate/core";
 import { MatDialog } from "@angular/material/dialog";
 import { ConsultationFormDialogComponent } from "../../dialogs/consultation-form-dialog/consultation-form-dialog.component";
 import { ApiService } from "../../../services/api.service";
-import {
-  ConsultationsResponse
-} from "../../../models/consultations-response.model";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-consultations',
@@ -20,19 +18,17 @@ import {
 export class ConsultationsComponent implements AfterViewInit, OnInit {
   displayedColumns: string[] = [];
   headers: any = {};
-
-  consultResponse: ConsultationsResponse | null = null;
+  dataSource: ConsultationsDatasource;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<Consultation>;
 
-  dataSource: ConsultationsDatasource;
-
   constructor(
     private _translate: TranslateService,
     public dialog: MatDialog,
     private _apiService: ApiService,
+    private _router: Router,
   ) {
     this.dataSource = new ConsultationsDatasource(this._apiService);
   }
@@ -42,18 +38,28 @@ export class ConsultationsComponent implements AfterViewInit, OnInit {
       this.headers = translations;
       this.displayedColumns = [...Object.keys(this.headers), "action"];
     });
-
-
   }
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
+
+    this.sort.sortChange.subscribe(() => {
+      this.dataSource.getSortedData(this.dataSource.data);
+    });
+
+    this.dataSource.dataSubject.subscribe(updatedData => {
+      this.table.renderRows();
+    });
   }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(ConsultationFormDialogComponent);
     dialogRef.afterClosed().subscribe(result => {});
+  }
+
+  redirectBasedConsultationType(type: string, id: number): void {
+    this._router.navigate([`consultations/${type.trim().toLowerCase()}/${id}`]);
   }
 }

@@ -1,0 +1,45 @@
+<main>
+  <mat-card>
+    <mat-card-title>
+      {{ "pep.title" | translate }}
+    </mat-card-title>
+    <mat-card-content appAutoScroll>
+      <table mat-table
+             [dataSource]="peps" multiTemplateDataRows
+             class="mat-elevation-z8">
+        <ng-container matColumnDef="{{ column }}" *ngFor="let column of displayedColumns">
+          <th mat-header-cell *matHeaderCellDef>{{ "pep.peps_table.headers." + column | translate }}</th>
+          <td mat-cell *matCellDef="let element"> {{ element[column] }} </td>
+        </ng-container>
+        <ng-container matColumnDef="expand">
+          <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button aria-label="expand row" (click)="(expandedElement = expandedElement === element ? null : element); $event.stopPropagation()">
+              <mat-icon *ngIf="expandedElement !== element">keyboard_arrow_down</mat-icon>
+              <mat-icon *ngIf="expandedElement === element">keyboard_arrow_up</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="expandedDetail">
+          <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplayWithExpand.length">
+            <div
+              [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'"
+            >
+              <div>{{ element.codOrgao }} </div>
+              <div> {{ element.siglaFuncao }} </div>
+              <div> {{ element.nivelFuncao }} </div>
+              <div> {{ element.dtFimCarencia }} </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand"></tr>
+        <tr mat-row *matRowDef="let element; columns: columnsToDisplayWithExpand;"
+            (click)="expandedElement = expandedElement === element ? null : element">
+        </tr>
+        <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
+</main>

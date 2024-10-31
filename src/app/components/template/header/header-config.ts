@@ -9,5 +9,7 @@
   { key: 'header.messages', route: '/messages', icon: 'message' },
   { key: 'header.administration', route: '/administration', icon: 'settings' },
   { key: 'header.help', route: '/help', icon: 'help' },
-  { key: 'header.logout', route: '/logout', icon: 'logout' }
+  { key: 'header.logout', route: '/logout', icon: 'logout' },
+  { key: 'header.pep', route: '/consultations/cpf/:id', icon: 'badge' },
+  { key: 'header.company', route: '/consultations/cnpj/:id', icon: 'store' }
 ];

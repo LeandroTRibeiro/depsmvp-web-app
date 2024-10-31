@@ -22,7 +22,9 @@
     "messages": "Mensagens",
     "administration": "Administração",
     "help": "Ajuda",
-    "logout": "Sair"
+    "logout": "Sair",
+    "pep": "Pessoas Expostas Politicamente (PEPs)",
+    "company": "Cadastro Nacional da Pessoa Jurídica"
   },
   "home": {
     "title": "Início",
@@ -75,6 +77,25 @@
     "actions_buttons": {
       "submit": "Buscar",
       "cancel": "Cancelar"
+    }
+  },
+  "pep": {
+    "title": "PEPS",
+    "peps_table": {
+      "headers": {
+        "cpf": "CPF",
+        "nome": "Name",
+        "descricaoFuncao": "Função",
+        "nomeOrgao": "Órgão",
+        "dtInicioExercicio": "Início exercício",
+        "dtFimExercicio": "Fim exercício"
+      }
+    },
+    "extra_info": {
+      "department_code": "Código do órgão",
+      "position_acronym": "Sigla Função",
+      "position_level": "Nível Função",
+      "end_grace_period": "Fim carência"
     }
   }
 }

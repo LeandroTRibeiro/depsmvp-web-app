@@ -3,6 +3,7 @@ import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 import {ResponsiveSidebarMenuService} from "../../../shared/services/responsive-sidebar-menu.service";
 import {HEADER_CONFIG} from "./header-config";
 import {NavigationEnd, Router} from "@angular/router";
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-header',
@@ -19,7 +20,8 @@ export class HeaderComponent implements OnInit {
   constructor(
     private _breakpointObserver: BreakpointObserver,
     private _responsiveSidebarMenuService: ResponsiveSidebarMenuService,
-    private _router: Router
+    private _router: Router,
+    private _location: Location
   ) {};
 
   handleIsMenuOpen() {
@@ -36,19 +38,31 @@ export class HeaderComponent implements OnInit {
     });
 
     this._router.events.subscribe(event => {
-      if(event instanceof NavigationEnd) {
-        const currentRoute = event.url;
+      if (event instanceof NavigationEnd) {
+        const currentRoute = event.urlAfterRedirects;
+        const routeSegments = currentRoute.split('/');
 
-        const headerItem = HEADER_CONFIG.find(item => item.route === currentRoute);
+        const headerItem = HEADER_CONFIG.find(item => {
+          const configSegments = item.route.split('/');
 
-        if(headerItem) {
+          if (configSegments.length !== routeSegments.length) {
+            return false;
+          }
+
+          return configSegments.every((segment, index) => {
+            return segment.startsWith(':') || segment === routeSegments[index];
+          });
+        });
+
+        if (headerItem) {
           this.titleKey = headerItem.key;
           this.icon = headerItem.icon;
         }
       }
     });
 
-
-
   };
+  goBack() {
+    this._location.back();
+  }
 }

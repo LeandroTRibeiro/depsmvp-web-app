@@ -33,6 +33,11 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import { MatNativeDateModule } from '@angular/material/core';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ConsultationCustomIntervalComponent } from './components/dialogs/consultation-custom-interval/consultation-custom-interval.component';
+import { PepComponent } from './components/pages/pep/pep.component';
+import { CompanyComponent } from './components/pages/company/company.component';
+import { CpfCnpjFormatPipe } from './pipes/cpf-cnpj-format.pipe';
+import {MatExpansionModule} from "@angular/material/expansion";
+import { DaysToReadableFormatPipe } from './pipes/days-to-readable-format.pipe';
 
 @NgModule({
   declarations: [
@@ -44,7 +49,11 @@ import { ConsultationCustomIntervalComponent } from './components/dialogs/consul
     ConsultationsComponent,
     AutoScrollDirective,
     ConsultationFormDialogComponent,
-    ConsultationCustomIntervalComponent
+    ConsultationCustomIntervalComponent,
+    PepComponent,
+    CompanyComponent,
+    CpfCnpjFormatPipe,
+    DaysToReadableFormatPipe
   ],
   imports: [
     BrowserModule,
@@ -74,7 +83,8 @@ import { ConsultationCustomIntervalComponent } from './components/dialogs/consul
     MatNativeDateModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatExpansionModule
   ],
   providers: [
     {
