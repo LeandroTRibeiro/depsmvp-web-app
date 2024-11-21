@@ -3,18 +3,17 @@ import {
   Directive,
   ElementRef,
   Input,
-  OnInit
+  OnInit,
 } from '@angular/core';
 
 @Directive({
-  selector: '[appAutoScroll]'
+  selector: '[appAutoScroll]',
 })
-
 export class AutoScrollDirective implements AfterViewInit {
   @Input() scrollDistance: number = 800;
   @Input() scrollDuration: number = 800;
 
-  constructor(private elementRef: ElementRef) { }
+  constructor(private elementRef: ElementRef) {}
 
   ngAfterViewInit() {
     this.autoScroll();
@@ -25,15 +24,14 @@ export class AutoScrollDirective implements AfterViewInit {
 
     element.scrollTo({
       left: this.scrollDistance,
-      behavior: 'smooth'
+      behavior: 'smooth',
     });
 
     setTimeout(() => {
       element.scrollTo({
         left: 0,
-        behavior: 'smooth'
+        behavior: 'smooth',
       });
-
     }, this.scrollDuration);
   }
 }

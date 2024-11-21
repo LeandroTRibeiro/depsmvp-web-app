@@ -8,7 +8,7 @@ describe('ConsultationCustomIntervalComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ConsultationCustomIntervalComponent]
+      declarations: [ConsultationCustomIntervalComponent],
     });
     fixture = TestBed.createComponent(ConsultationCustomIntervalComponent);
     component = fixture.componentInstance;

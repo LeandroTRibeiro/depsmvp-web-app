@@ -1,4 +1,4 @@
-import {Consultation} from "./consultation.model";
+import { Consultation } from './consultation.model';
 
 export interface ConsultationsResponse {
   data: Consultation[];

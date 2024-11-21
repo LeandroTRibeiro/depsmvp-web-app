@@ -1,1 +1,237 @@
-<p>company works!</p>
+<main>
+  <mat-card *ngIf="company">
+    <mat-card-header>
+      <mat-card-title>
+        {{ 'company.title' | translate }}
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-card-title>
+        <span>{{ company.razaoSocial }}</span>
+        <span>{{ company.cnpj | cpfCnpjFormat }}</span>
+      </mat-card-title>
+      <mat-card-subtitle>
+        <span>{{ 'company.razaoSocial' | translate }}</span>
+        <span>{{ 'company.cnpj' | translate }}</span>
+      </mat-card-subtitle>
+
+      <mat-divider></mat-divider>
+
+      <div class="company-info">
+        <p>
+          <strong>{{ 'company.cnpj' | translate }}</strong>
+          {{ company.cnpj | cpfCnpjFormat }}
+        </p>
+        <p>
+          <strong>{{ 'company.identificadorMatrizFilial' | translate }}</strong>
+          {{ company.identificadorMatrizFilial }}
+        </p>
+        <p>
+          <strong>{{ 'company.descricaoMatrizFilial' | translate }}</strong>
+          {{ company.descricaoMatrizFilial }}
+        </p>
+        <p>
+          <strong>{{ 'company.razaoSocial' | translate }}</strong>
+          {{ company.razaoSocial }}
+        </p>
+        <p>
+          <strong>{{ 'company.nomeFantasia' | translate }}</strong>
+          {{ company.nomeFantasia || 'N/A' }}
+        </p>
+        <p>
+          <strong>{{ 'company.situacaoCadastral' | translate }}</strong>
+          {{ company.descricaoSituacaoCadastral }}
+        </p>
+        <p>
+          <strong>{{ 'company.dataSituacaoCadastral' | translate }}</strong>
+          {{ company.dataSituacaoCadastral }}
+        </p>
+        <p>
+          <strong>{{ 'company.motivoSituacaoCadastral' | translate }}</strong>
+          {{ company.motivoSituacaoCadastral }}
+        </p>
+        <p>
+          <strong>{{ 'company.nomeCidadeExterior' | translate }}</strong>
+          {{ company.nomeCidadeExterior || 'N/A' }}
+        </p>
+        <p>
+          <strong>{{ 'company.codigoNaturezaJuridica' | translate }}</strong>
+          {{ company.codigoNaturezaJuridica }}
+        </p>
+        <p>
+          <strong>{{ 'company.dataInicioAtividade' | translate }}</strong>
+          {{ company.dataInicioAtividade }}
+        </p>
+        <p>
+          <strong>{{ 'company.cnaeFiscal' | translate }}</strong>
+          {{ company.cnaeFiscal }}
+        </p>
+        <p>
+          <strong>{{ 'company.cnaeFiscalDescricao' | translate }}</strong>
+          {{ company.cnaeFiscalDescricao }}
+        </p>
+        <p>
+          <strong>{{ 'company.qualificacaoDoResponsavel' | translate }}</strong>
+          {{ company.qualificacaoDoResponsavel }}
+        </p>
+        <p>
+          <strong>{{ 'company.capitalSocial' | translate }}</strong>
+          {{ company.capitalSocial | currency }}
+        </p>
+        <p>
+          <strong>{{ 'company.porte' | translate }}</strong> {{ company.porte }}
+        </p>
+        <p>
+          <strong>{{ 'company.descricaoPorte' | translate }}</strong>
+          {{ company.descricaoPorte }}
+        </p>
+        <p>
+          <strong>{{ 'company.opcaoPeloSimples' | translate }}</strong>
+          {{ company.opcaoPeloSimples ? 'Sim' : 'Não' }}
+        </p>
+        <p>
+          <strong>{{ 'company.dataOpcaoPeloSimples' | translate }}</strong>
+          {{ company.dataOpcaoPeloSimples || 'N/A' }}
+        </p>
+        <p>
+          <strong>{{ 'company.dataExclusaoDoSimples' | translate }}</strong>
+          {{ company.dataExclusaoDoSimples || 'N/A' }}
+        </p>
+        <p>
+          <strong>{{ 'company.opcaoPeloMei' | translate }}</strong>
+          {{ company.opcaoPeloMei ? 'Sim' : 'Não' }}
+        </p>
+        <p>
+          <strong>{{ 'company.situacaoEspecial' | translate }}</strong>
+          {{ company.situacaoEspecial || 'N/A' }}
+        </p>
+        <p>
+          <strong>{{ 'company.dataSituacaoEspecial' | translate }}</strong>
+          {{ company.dataSituacaoEspecial || 'N/A' }}
+        </p>
+      </div>
+
+      <mat-divider></mat-divider>
+
+      <div class="company-address">
+        <p>
+          <strong>{{ 'company.address.logradouro' | translate }}</strong>
+          {{ company.logradouro }}
+        </p>
+        <p>
+          <strong>{{ 'company.address.numero' | translate }}</strong>
+          {{ company.numero }}
+        </p>
+        <p>
+          <strong>{{ 'company.address.complemento' | translate }}</strong>
+          {{ company.complemento || 'N/A' }}
+        </p>
+        <p>
+          <strong>{{ 'company.address.bairro' | translate }}</strong>
+          {{ company.bairro }}
+        </p>
+        <p>
+          <strong>{{ 'company.address.municipio' | translate }}</strong>
+          {{ company.municipio }}
+        </p>
+        <p>
+          <strong>{{ 'company.address.uf' | translate }}</strong>
+          {{ company.uf }}
+        </p>
+        <p>
+          <strong>{{ 'company.address.cep' | translate }}</strong>
+          {{ company.cep }}
+        </p>
+      </div>
+
+      <div *ngIf="mapIframeSrc" class="map-container">
+        <iframe
+          width="100%"
+          height="450"
+          style="border: 0"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+          [src]="mapIframeSrc"
+        >
+        </iframe>
+      </div>
+
+      <mat-divider></mat-divider>
+
+      <div class="cnaesSecundarios">
+        <ng-container *ngFor="let cnae of company?.cnaesSecundarios">
+          <p>
+            <strong>{{ 'company.cnaesSecundarios.codigo' | translate }}</strong>
+            {{ cnae.codigo }}
+          </p>
+          <p>
+            <strong>{{
+              'company.cnaesSecundarios.descricao' | translate
+            }}</strong>
+            {{ cnae.descricao }}
+          </p>
+          <mat-divider></mat-divider>
+        </ng-container>
+      </div>
+
+      <mat-divider></mat-divider>
+
+      <div class="qsa">
+        <ng-container *ngFor="let socio of company?.qsa">
+          <p>
+            <strong>{{
+              'company.qsa.identificadorDeSocio' | translate
+            }}</strong>
+            {{ socio.identificadorDeSocio }}
+          </p>
+          <p>
+            <strong>{{ 'company.qsa.nomeSocio' | translate }}</strong>
+            {{ socio.nomeSocio }}
+          </p>
+          <p>
+            <strong>{{ 'company.qsa.cnpjCpfDoSocio' | translate }}</strong>
+            {{ socio.cnpjCpfDoSocio }}
+          </p>
+          <p>
+            <strong>{{
+              'company.qsa.codigoQualificacaoSocio' | translate
+            }}</strong>
+            {{ socio.codigoQualificacaoSocio }}
+          </p>
+          <p>
+            <strong>{{
+              'company.qsa.percentualCapitalSocial' | translate
+            }}</strong>
+            {{ socio.percentualCapitalSocial || 'N/A' }}%
+          </p>
+          <p>
+            <strong>{{
+              'company.qsa.dataEntradaSociedade' | translate
+            }}</strong>
+            {{ socio.dataEntradaSociedade }}
+          </p>
+          <p>
+            <strong>{{
+              'company.qsa.cpfRepresentanteLegal' | translate
+            }}</strong>
+            {{ socio.cpfRepresentanteLegal || 'N/A' }}
+          </p>
+          <p>
+            <strong>{{
+              'company.qsa.nomeRepresentanteLegal' | translate
+            }}</strong>
+            {{ socio.nomeRepresentanteLegal || 'N/A' }}
+          </p>
+          <p>
+            <strong>{{
+              'company.qsa.codigoQualificacaoRepresentanteLegal' | translate
+            }}</strong>
+            {{ socio.codigoQualificacaoRepresentanteLegal }}
+          </p>
+          <mat-divider></mat-divider>
+        </ng-container>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</main>

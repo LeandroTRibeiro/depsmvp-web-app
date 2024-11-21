@@ -1,8 +1,9 @@
 main {
   padding: 20px;
-
+  @media (max-width: 678px) {
+    padding: 0;
+  }
   mat-card {
-
     mat-card-title {
       padding: 20px;
       display: flex;
@@ -39,7 +40,6 @@ main {
           width: 200vw;
         }
       }
-
     }
 
     mat-card-actions {
@@ -55,4 +55,3 @@ main {
     }
   }
 }
-

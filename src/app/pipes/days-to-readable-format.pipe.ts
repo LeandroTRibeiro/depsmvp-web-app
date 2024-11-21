@@ -1,10 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'daysToReadableFormat'
+  name: 'daysToReadableFormat',
 })
 export class DaysToReadableFormatPipe implements PipeTransform {
-
   transform(value: number): string {
     if (!value || value < 0) return '0 dias';
 

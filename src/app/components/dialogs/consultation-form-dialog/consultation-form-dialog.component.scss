@@ -1,3 +1,10 @@
+form {
+  width: 50vw;
+  @media (max-width: 678px) {
+    width: 100vw;
+  }
+}
+
 .input-container {
   display: flex;
 
@@ -22,5 +29,3 @@
     }
   }
 }
-
-

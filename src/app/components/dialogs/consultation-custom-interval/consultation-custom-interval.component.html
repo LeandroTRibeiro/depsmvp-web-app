@@ -1,28 +1,61 @@
-<form mat-dialog-content>
-  <h1>Intervalo Personalizado</h1>
+<form
+  [formGroup]="customIntervalForm"
+  (ngSubmit)="onSubmit()"
+  mat-dialog-content
+>
+  <h1>
+    {{ 'consultation_form_dialog.custom_interval_dialog.title' | translate }}
+  </h1>
+
   <mat-form-field>
-    <mat-label>Intervalo:</mat-label>
-    <input
-      type="number"
-      matInput
-      required
-    >
-    <mat-hint>Somente numeros</mat-hint>
+    <mat-label>{{
+      'consultation_form_dialog.custom_interval_dialog.fields.interval.label'
+        | translate
+    }}</mat-label>
+    <input type="number" matInput formControlName="interval" required />
+    <mat-hint>{{
+      'consultation_form_dialog.custom_interval_dialog.fields.interval.hint'
+        | translate
+    }}</mat-hint>
   </mat-form-field>
+
   <mat-form-field>
-    <mat-label>Período</mat-label>
-    <mat-select
-      required
-    >
-      <mat-option value="1">Dia</mat-option>
-      <mat-option value="2">Mês</mat-option>
-      <mat-option value="3">Ano</mat-option>
+    <mat-label>{{
+      'consultation_form_dialog.custom_interval_dialog.fields.unit.label'
+        | translate
+    }}</mat-label>
+    <mat-select formControlName="unit" required>
+      <mat-option value="dia">{{
+        'consultation_form_dialog.custom_interval_dialog.fields.unit.options.day'
+          | translate
+      }}</mat-option>
+      <mat-option value="mes">{{
+        'consultation_form_dialog.custom_interval_dialog.fields.unit.options.month'
+          | translate
+      }}</mat-option>
+      <mat-option value="ano">{{
+        'consultation_form_dialog.custom_interval_dialog.fields.unit.options.year'
+          | translate
+      }}</mat-option>
     </mat-select>
   </mat-form-field>
+
   <div class="submit-buttons">
-    <button mat-raised-button>
-      Cancelar
+    <button mat-raised-button matDialogClose>
+      {{
+        'consultation_form_dialog.custom_interval_dialog.actions.cancel'
+          | translate
+      }}
     </button>
-    <button mat-raised-button>Selecionar</button>
+    <button
+      type="submit"
+      [disabled]="customIntervalForm.invalid"
+      mat-raised-button
+    >
+      {{
+        'consultation_form_dialog.custom_interval_dialog.actions.submit'
+          | translate
+      }}
+    </button>
   </div>
 </form>

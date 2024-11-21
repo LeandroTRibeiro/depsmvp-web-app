@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class IntervalUtilsService {
   convertCustomIntervalToDays(value: number, unit: string): number {
@@ -17,5 +17,3 @@ export class IntervalUtilsService {
     }
   }
 }
-
-

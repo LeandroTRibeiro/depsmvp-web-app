@@ -1,8 +1,17 @@
 main {
   padding: 20px;
 
+  @media (max-width: 678px) {
+    padding: 0;
+  }
+
   mat-card {
     padding: 20px;
+
+    mat-card-title {
+      display: flex;
+      justify-content: center;
+    }
 
     mat-card-content {
       padding: 20px;
@@ -11,6 +20,10 @@ main {
       align-items: center;
       font-size: 26px;
       font-weight: bold;
+
+      @media (max-width: 678px) {
+        flex-direction: column;
+      }
     }
   }
 }

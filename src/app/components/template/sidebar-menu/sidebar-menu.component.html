@@ -1,23 +1,12 @@
 <mat-drawer-container class="sidebar-container">
-  <mat-drawer
-    class="sidebar-menu"
-    mode="side"
-    [opened]="isMenuOpened"
-  >
-
+  <mat-drawer class="sidebar-menu" mode="side" [opened]="isMenuOpened">
     <a routerLink="">
-      <img src="assets/images/logo-deps.png" alt="logo deps">
+      <img src="assets/images/logo-deps.png" alt="logo deps" />
     </a>
 
     <ng-container *ngIf="isHandSet">
-      <button
-        mat-icon-button
-        (click)="handlerIsMenuOpen()"
-        class="menu-toogle"
-      >
-        <mat-icon>
-          menu
-        </mat-icon>
+      <button mat-icon-button (click)="handlerIsMenuOpen()" class="menu-toogle">
+        <mat-icon> menu </mat-icon>
       </button>
     </ng-container>
 
@@ -41,9 +30,7 @@
         href="https://github.com/LeandroTRibeiro"
         target="_blank"
       >
-        <span>
-          Versão 1.0.0 Leandro T. Ribeiro
-        </span>
+        <span> Versão 1.0.0 Leandro T. Ribeiro </span>
       </a>
     </mat-nav-list>
   </mat-drawer>

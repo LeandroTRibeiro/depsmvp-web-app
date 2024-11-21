@@ -39,9 +39,12 @@ export class ConsultationsDatasource extends DataSource<Consultation> {
     this.dataSubject.complete();
   }
 
-  private loadConsultations(pageNumber: number, pageSize: number): Observable<Consultation[]> {
+  private loadConsultations(
+    pageNumber: number,
+    pageSize: number
+  ): Observable<Consultation[]> {
     return this.apiService.getConsults(pageNumber, pageSize).pipe(
-      map(response => {
+      map((response) => {
         this.data = response.data;
         this.totalItems = response.totalItems;
         this.paginator!.length = this.totalItems;
@@ -60,13 +63,28 @@ export class ConsultationsDatasource extends DataSource<Consultation> {
     const sorted = data.sort((a, b) => {
       const isAsc = this.sort?.direction === 'asc';
       switch (this.sort?.active) {
-        case 'user': return compare(a.userId, b.userId, isAsc);
-        case 'consultation_date': return compare(new Date(a.consultationDate).getTime(), new Date(b.consultationDate).getTime(), isAsc);
-        case 'consultation_type': return compare(a.consultationType, b.consultationType, isAsc);
-        case 'consultation_code': return compare(a.consultationCode, b.consultationCode, isAsc);
-        case 'consultation_date_reference': return compare(new Date(a.consultationDateReference).getTime(), new Date(b.consultationDateReference).getTime(), isAsc);
-        case 'consultation_interval': return compare(a.consultationInterval, b.consultationInterval, isAsc);
-        default: return 0;
+        case 'user':
+          return compare(a.userId, b.userId, isAsc);
+        case 'consultation_date':
+          return compare(
+            new Date(a.consultationDate).getTime(),
+            new Date(b.consultationDate).getTime(),
+            isAsc
+          );
+        case 'consultation_type':
+          return compare(a.consultationType, b.consultationType, isAsc);
+        case 'consultation_code':
+          return compare(a.consultationCode, b.consultationCode, isAsc);
+        case 'consultation_date_reference':
+          return compare(
+            new Date(a.consultationDateReference).getTime(),
+            new Date(b.consultationDateReference).getTime(),
+            isAsc
+          );
+        case 'consultation_interval':
+          return compare(a.consultationInterval, b.consultationInterval, isAsc);
+        default:
+          return 0;
       }
     });
 
@@ -75,13 +93,19 @@ export class ConsultationsDatasource extends DataSource<Consultation> {
   }
 }
 
-function compare(a: string | number, b: string | number, isAsc: boolean): number {
+function compare(
+  a: string | number,
+  b: string | number,
+  isAsc: boolean
+): number {
   if (a === b) return 0;
   if (a === null || a === undefined) return isAsc ? -1 : 1;
   if (b === null || b === undefined) return isAsc ? 1 : -1;
 
   if (typeof a === 'string' && typeof b === 'string') {
-    return a.localeCompare(b, undefined, { sensitivity: 'base' }) * (isAsc ? 1 : -1);
+    return (
+      a.localeCompare(b, undefined, { sensitivity: 'base' }) * (isAsc ? 1 : -1)
+    );
   }
 
   return (a < b ? -1 : 1) * (isAsc ? 1 : -1);

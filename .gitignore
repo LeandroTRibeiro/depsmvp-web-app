@@ -40,3 +40,17 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Environments (não versionar arquivos de configuração específicos)
+src/environments/environment*.ts
+!src/environments/environment.example.ts
+
+# Logs adicionais
+*.log
+yarn-debug.log*
+yarn-error.log*
+
+# Arquivos temporários criados por Angular CLI e Bazel
+.angular/
+.bazelrc.user
+

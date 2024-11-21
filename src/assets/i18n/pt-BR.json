@@ -46,6 +46,7 @@
     "submit_button": "Nova Consulta"
   },
   "consultation_form_dialog": {
+    "title": "Nova Consulta",
     "select_type": {
       "label": "Consulta por:",
       "cpf": "CPF",
@@ -59,14 +60,16 @@
       "hint": "Somente números",
       "placeholder": "Ex. 00000000000",
       "invalid_error": "Entre com um CPF válido!",
-      "required_error": "CPF é necessário!"
+      "required_error": "CPF é necessário!",
+      "minlength_error": "CPF deve ter no mínimo 11 caracteres."
     },
     "input_cnpj": {
       "label": "CNPJ",
       "hint": "Somente números",
       "placeholder": "EX. 00000000000000",
       "invalid_error": "Entre com um CNPJ válido!",
-      "required_error": "CPF é necessário!"
+      "required_error": "CPF é necessário!",
+      "minlength_error": "CNPJ deve ter no mínimo 14 caracteres."
     },
     "select_interval": {
       "label": "Pesquisar pelos últimos:",
@@ -77,6 +80,27 @@
     "actions_buttons": {
       "submit": "Buscar",
       "cancel": "Cancelar"
+    },
+    "custom_interval_dialog": {
+      "title": "Intervalo Personalizado",
+      "fields": {
+        "interval": {
+          "label": "Intervalo:",
+          "hint": "Somente números"
+        },
+        "unit": {
+          "label": "Período",
+          "options": {
+            "day": "Dia",
+            "month": "Mês",
+            "year": "Ano"
+          }
+        }
+      },
+      "actions": {
+        "cancel": "Cancelar",
+        "submit": "Selecionar"
+      }
     }
   },
   "pep": {
@@ -92,10 +116,67 @@
       }
     },
     "extra_info": {
-      "department_code": "Código do órgão",
-      "position_acronym": "Sigla Função",
-      "position_level": "Nível Função",
-      "end_grace_period": "Fim carência"
+      "title": "Informações Extras",
+      "department_code": "Código do órgão: ",
+      "position_acronym": "Sigla Função: ",
+      "position_level": "Nível Função: ",
+      "end_grace_period": "Fim carência: "
+    }
+  },
+  "company": {
+    "title": "Pessoa Jurídica",
+    "cnpj": "CNPJ",
+    "identificadorMatrizFilial": "Identificador Matriz/Filial: ",
+    "descricaoMatrizFilial": "Descrição Matriz/Filial: ",
+    "razaoSocial": "Razão Social",
+    "nomeFantasia": "Nome Fantasia: ",
+    "situacaoCadastral": "Situação Cadastral: ",
+    "descricaoSituacaoCadastral": "Descrição Situação Cadastral: ",
+    "dataSituacaoCadastral": "Data Situação Cadastral: ",
+    "motivoSituacaoCadastral": "Motivo Situação Cadastral: ",
+    "nomeCidadeExterior": "Nome Cidade Exterior: ",
+    "codigoNaturezaJuridica": "Código Natureza Jurídica: ",
+    "dataInicioAtividade": "Data Início Atividade: ",
+    "cnaeFiscal": "CNAE Fiscal: ",
+    "cnaeFiscalDescricao": "Descrição CNAE Fiscal: ",
+    "qualificacaoDoResponsavel": "Qualificação do Responsável: ",
+    "capitalSocial": "Capital Social: ",
+    "porte": "Porte: ",
+    "descricaoPorte": "Descrição Porte: ",
+    "opcaoPeloSimples": "Opção pelo Simples: ",
+    "dataOpcaoPeloSimples": "Data Opção pelo Simples: ",
+    "dataExclusaoDoSimples": "Data Exclusão do Simples: ",
+    "opcaoPeloMei": "Opção pelo MEI: ",
+    "situacaoEspecial": "Situação Especial: ",
+    "dataSituacaoEspecial": "Data Situação Especial: ",
+    "address": {
+      "descricaoTipoDeLogradouro": "Descrição Tipo de Logradouro: ",
+      "logradouro": "Logradouro: ",
+      "numero": "Número: ",
+      "complemento": "Complemento: ",
+      "bairro": "Bairro: ",
+      "cep": "CEP: ",
+      "uf": "UF: ",
+      "codigoMunicipio": "Código Município: ",
+      "municipio": "Município: ",
+      "dddTelefone1": "DDD Telefone 1: ",
+      "dddTelefone2": "DDD Telefone 2: ",
+      "dddFax": "DDD Fax: "
+    },
+    "cnaesSecundarios": {
+      "codigo": "Código CNAE Secundário: ",
+      "descricao": "Descrição CNAE Secundário: "
+    },
+    "qsa": {
+      "identificadorDeSocio": "Identificador de Sócio: ",
+      "nomeSocio": "Nome do Sócio: ",
+      "cnpjCpfDoSocio": "CNPJ/CPF do Sócio: ",
+      "codigoQualificacaoSocio": "Código Qualificação do Sócio: ",
+      "percentualCapitalSocial": "Percentual do Capital Social: ",
+      "dataEntradaSociedade": "Data Entrada na Sociedade: ",
+      "cpfRepresentanteLegal": "CPF do Representante Legal: ",
+      "nomeRepresentanteLegal": "Nome do Representante Legal: ",
+      "codigoQualificacaoRepresentanteLegal": "Código Qualificação Representante Legal: "
     }
   }
 }

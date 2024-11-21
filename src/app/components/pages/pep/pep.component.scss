@@ -1,8 +1,20 @@
 main {
   padding: 20px;
 
+  @media (max-width: 678px) {
+    padding: 0;
+  }
+
   mat-card-title {
     padding: 20px;
+  }
+
+  mat-card-content {
+    scroll-behavior: smooth;
+
+    @media (max-width: 678px) {
+      overflow-x: scroll;
+    }
   }
 
   tr:hover {
@@ -57,4 +69,23 @@ tr.example-element-row:not(.example-expanded-row):active {
 
 .example-element-description-attribution {
   opacity: 0.5;
+}
+
+.expanded-row {
+  padding: 20px;
+}
+
+.extra-info {
+  width: fit-content;
+  mat-card-header {
+    mat-card-title {
+      font-size: 16px;
+    }
+  }
+  div {
+    font-weight: bold;
+    span {
+      font-weight: normal;
+    }
+  }
 }
