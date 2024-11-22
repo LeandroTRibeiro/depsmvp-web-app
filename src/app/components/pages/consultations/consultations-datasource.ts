@@ -20,14 +20,17 @@ export class ConsultationsDatasource extends DataSource<Consultation> {
   connect(): Observable<Consultation[]> {
     if (this.paginator && this.sort) {
       return merge(
-        this.paginator.page.pipe(startWith({})),
-        this.sort.sortChange.pipe(startWith({}))
+        this.paginator.page,
+        this.sort.sortChange
       ).pipe(
+        startWith(null),
         switchMap(() => {
-          return this.loadConsultations(
-            (this.paginator?.pageIndex ?? 0) + 1,
-            this.paginator?.pageSize ?? 10
-          );
+          const pageIndex = this.paginator?.pageIndex ?? 0;
+          const pageSize = this.paginator?.pageSize ?? 10;
+          return this.loadConsultations(pageIndex + 1, pageSize);
+        }),
+        tap(() => {
+          this.dataSubject.next(this.data);
         })
       );
     } else {
