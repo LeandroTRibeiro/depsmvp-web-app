@@ -1,0 +1,17 @@
+<ng-container>
+  <table [dataSource]="skeletonData" mat-table class="skeleton-table">
+
+    <ng-container *ngFor="let column of jsonTranslatePath ? translatedColumns : columnsDisplay" [matColumnDef]="column">
+      <ng-container>
+        <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+        <th mat-header-cell *matHeaderCellDef>No.</th>
+        <td mat-cell *matCellDef="let row">
+          <div class="skeleton skeleton-text"></div>
+        </td>
+      </ng-container>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="jsonTranslatePath ? translatedColumns : columnsDisplay"></tr>
+    <tr mat-row *matRowDef="let row; columns: jsonTranslatePath ? translatedColumns : columnsDisplay;"></tr>
+  </table>
+</ng-container>

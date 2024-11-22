@@ -38,6 +38,7 @@ import { CompanyComponent } from './components/pages/company/company.component';
 import { CpfCnpjFormatPipe } from './pipes/cpf-cnpj-format.pipe';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { DaysToReadableFormatPipe } from './pipes/days-to-readable-format.pipe';
+import { TableSkeletonComponent } from './shared/table-skeleton/table-skeleton.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { DaysToReadableFormatPipe } from './pipes/days-to-readable-format.pipe';
     CompanyComponent,
     CpfCnpjFormatPipe,
     DaysToReadableFormatPipe,
+    TableSkeletonComponent,
   ],
   imports: [
     BrowserModule,

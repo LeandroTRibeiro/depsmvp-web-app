@@ -40,7 +40,8 @@
         "consultation_type": "TIPO",
         "consultation_code": "CÓDIGO",
         "consultation_date_reference": "DATA DA REFERÊNCIA",
-        "consultation_interval": "INTERVALO"
+        "consultation_interval": "INTERVALO",
+        "action": ""
       }
     },
     "submit_button": "Nova Consulta"

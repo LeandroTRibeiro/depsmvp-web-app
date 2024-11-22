@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../../services/api.service';
+import { ApiService } from '../../../services/api-service/api.service';
 import { Pep } from '../../../models/pep.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
@@ -9,7 +9,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { PepStorageService } from '../../../services/pep-storage.service';
+import { PepStorageService } from '../../../services/pep-storage-service/pep-storage.service';
 
 @Component({
   selector: 'app-pep',

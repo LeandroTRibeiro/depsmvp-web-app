@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MENU_CONFIG } from './menu-config';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { ResponsiveSidebarMenuService } from '../../../shared/services/responsive-sidebar-menu.service';
+import { ResponsiveSidebarMenuService } from '../../../services/responsive-sidebar-menu-service/responsive-sidebar-menu.service';
 
 @Component({
   selector: 'app-sidebar-menu',

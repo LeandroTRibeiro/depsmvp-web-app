@@ -7,8 +7,10 @@ import { ConsultationsDatasource } from './consultations-datasource';
 import { TranslateService } from '@ngx-translate/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ConsultationFormDialogComponent } from '../../dialogs/consultation-form-dialog/consultation-form-dialog.component';
-import { ApiService } from '../../../services/api.service';
+import { ApiService } from '../../../services/api-service/api.service';
 import { Router } from '@angular/router';
+import {Observable} from "rxjs";
+import {map} from "rxjs/operators";
 
 @Component({
   selector: 'app-consultations',
@@ -19,6 +21,7 @@ export class ConsultationsComponent implements AfterViewInit, OnInit {
   displayedColumns: string[] = [];
   headers: any = {};
   dataSource: ConsultationsDatasource;
+  loading = true;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -30,15 +33,17 @@ export class ConsultationsComponent implements AfterViewInit, OnInit {
     private _apiService: ApiService,
     private _router: Router
   ) {
-    this.dataSource = new ConsultationsDatasource(this._apiService);
+    this.dataSource = new ConsultationsDatasource(this.loadConsultations.bind(this));
   }
 
   ngOnInit(): void {
+
+    console.log(this.loading);
     this._translate
       .get('consultations.consultation_table.headers')
       .subscribe((translations) => {
         this.headers = translations;
-        this.displayedColumns = [...Object.keys(this.headers), 'action'];
+        this.displayedColumns = [...Object.keys(this.headers)];
       });
   }
 
@@ -63,5 +68,26 @@ export class ConsultationsComponent implements AfterViewInit, OnInit {
 
   redirectBasedConsultationType(type: string, id: number): void {
     this._router.navigate([`consultations/${type.trim().toLowerCase()}/${id}`]);
+  }
+
+  private loadConsultations(
+    pageNumber: number,
+    pageSize: number
+  ): Observable<Consultation[]> {
+
+    this.loading = true;
+
+    return this._apiService.getConsults(pageNumber, pageSize).pipe(
+      map((response) => {
+        this.dataSource.data = response.data;
+        this.dataSource.totalItems = response.totalItems;
+        this.paginator!.length = this.dataSource.totalItems;
+        const sortedData = this.dataSource.getSortedData([...this.dataSource.data]);
+        this.dataSource.dataSubject.next(sortedData);
+        this.loading = false;
+        console.log(this.loading);
+        return sortedData;
+      })
+    );
   }
 }

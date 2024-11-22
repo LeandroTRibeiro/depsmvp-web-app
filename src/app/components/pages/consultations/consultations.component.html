@@ -7,7 +7,16 @@
       </button>
     </mat-card-title>
     <mat-card-content appAutoScroll>
-      <table mat-table class="full-width-table" matSort aria-label="Elements">
+      <ng-container *ngIf="loading; else dataTable">
+        <app-table-skeleton
+          [rowsNumber]="10"
+          [columnsDisplay]="displayedColumns"
+          [traslateText]="true"
+          [jsonTranslatePath]="'consultations.consultation_table.headers'"
+        />
+      </ng-container>
+      <ng-template #dataTable>
+        <table mat-table class="full-width-table" matSort aria-label="Elements">
         <ng-container matColumnDef="user">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>
             {{ headers.user | translate }}
@@ -75,6 +84,7 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
       </table>
+      </ng-template>
     </mat-card-content>
     <mat-card-actions>
       <mat-paginator

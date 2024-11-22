@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { map, switchMap, startWith, tap } from 'rxjs/operators';
 import { Observable, merge, BehaviorSubject } from 'rxjs';
 import { Consultation } from '../../../models/consultation.model';
-import { ApiService } from '../../../services/api.service';
+import { ApiService } from '../../../services/api-service/api.service';
 
 export class ConsultationsDatasource extends DataSource<Consultation> {
   dataSubject = new BehaviorSubject<Consultation[]>([]);
@@ -12,12 +12,15 @@ export class ConsultationsDatasource extends DataSource<Consultation> {
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
   totalItems = 0;
+  loadConsultations: (pageNumber: number, pageSize: number) => Observable<Consultation[]>;
 
-  constructor(private apiService: ApiService) {
+  constructor(loadConsultations: (pageNumber: number, pageSize: number) => Observable<Consultation[]>) {
     super();
+    this.loadConsultations = loadConsultations;
   }
 
   connect(): Observable<Consultation[]> {
+
     if (this.paginator && this.sort) {
       return merge(
         this.paginator.page,
@@ -40,22 +43,6 @@ export class ConsultationsDatasource extends DataSource<Consultation> {
 
   disconnect(): void {
     this.dataSubject.complete();
-  }
-
-  private loadConsultations(
-    pageNumber: number,
-    pageSize: number
-  ): Observable<Consultation[]> {
-    return this.apiService.getConsults(pageNumber, pageSize).pipe(
-      map((response) => {
-        this.data = response.data;
-        this.totalItems = response.totalItems;
-        this.paginator!.length = this.totalItems;
-        const sortedData = this.getSortedData([...this.data]);
-        this.dataSubject.next(sortedData);
-        return sortedData;
-      })
-    );
   }
 
   public getSortedData(data: Consultation[]): Consultation[] {

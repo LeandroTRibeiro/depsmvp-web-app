@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Consultation } from '../models/consultation.model';
-import { environment } from '../../environments/environment';
-import { ConsultationsResponse } from '../models/consultations-response.model';
-import { Company } from '../models/company.model';
-import { Pep } from '../models/pep.model';
-import { PepRequestModel } from '../models/pepRequest.model';
-import { CompanyRequestModel } from '../models/companyRequest.model';
+import { Consultation } from '../../models/consultation.model';
+import { environment } from '../../../environments/environment';
+import { ConsultationsResponse } from '../../models/consultations-response.model';
+import { Company } from '../../models/company.model';
+import { Pep } from '../../models/pep.model';
+import { PepRequestModel } from '../../models/pepRequest.model';
+import { CompanyRequestModel } from '../../models/companyRequest.model';
 
 @Injectable({
   providedIn: 'root',

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Company } from '../../../models/company.model';
-import { ApiService } from '../../../services/api.service';
+import { ApiService } from '../../../services/api-service/api.service';
 import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { CompanyStorageService } from '../../../services/company-storage.service';
+import { CompanyStorageService } from '../../../services/company-storage-service/company-storage.service';
 
 @Component({
   selector: 'app-company',

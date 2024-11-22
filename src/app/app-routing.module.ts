@@ -5,6 +5,9 @@ import { NotFoundComponent } from './components/pages/not-found/not-found.compon
 import { ConsultationsComponent } from './components/pages/consultations/consultations.component';
 import { CompanyComponent } from './components/pages/company/company.component';
 import { PepComponent } from './components/pages/pep/pep.component';
+import {
+  TableSkeletonComponent
+} from "./shared/table-skeleton/table-skeleton.component";
 
 const routes: Routes = [
   {
@@ -30,6 +33,10 @@ const routes: Routes = [
   {
     path: 'consultations/cnpj',
     component: CompanyComponent,
+  },
+  {
+    path: 'test',
+    component: TableSkeletonComponent,
   },
   {
     path: '**',

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { ApiService } from './api.service';
-import { PepStorageService } from './pep-storage.service';
-import { CompanyStorageService } from './company-storage.service';
+import { ApiService } from '../api-service/api.service';
+import { PepStorageService } from '../pep-storage-service/pep-storage.service';
+import { CompanyStorageService } from '../company-storage-service/company-storage.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { PepRequestModel } from '../models/pepRequest.model';
+import { PepRequestModel } from '../../models/pepRequest.model';
 
 @Injectable({
   providedIn: 'root',
