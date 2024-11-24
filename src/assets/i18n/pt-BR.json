@@ -80,7 +80,8 @@
     },
     "actions_buttons": {
       "submit": "Buscar",
-      "cancel": "Cancelar"
+      "cancel": "Cancelar",
+      "loading": "Carregando..."
     },
     "custom_interval_dialog": {
       "title": "Intervalo Personalizado",

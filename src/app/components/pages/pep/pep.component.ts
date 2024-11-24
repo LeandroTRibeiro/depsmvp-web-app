@@ -52,6 +52,7 @@ export class PepComponent implements OnInit {
       this._apiService
         .getPepByConsultationId(Number(this.id))
         .subscribe((response) => {
+          console.log(response);
           this.peps = response;
         });
     } else {

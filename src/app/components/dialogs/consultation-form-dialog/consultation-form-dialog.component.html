@@ -1,11 +1,20 @@
-<form [formGroup]="consultationForm" (ngSubmit)="onSubmit()" mat-dialog-content>
+<form
+  [formGroup]="consultationForm"
+  (ngSubmit)="onSubmit()"
+  mat-dialog-content
+  [ngClass]="{'loading' : loading}"
+>
   <h1>{{ 'consultation_form_dialog.title' | translate }}</h1>
   <div class="input-container">
     <mat-form-field>
       <mat-label>{{
         'consultation_form_dialog.select_type.label' | translate
       }}</mat-label>
-      <mat-select formControlName="type" required>
+      <mat-select
+        formControlName="type"
+        required
+        [disabled]="loading"
+      >
         <mat-option *ngFor="let type of consultationType" [value]="type.value">
           {{ type.labelKey | translate }}
         </mat-option>
@@ -21,6 +30,7 @@
         [matDatepicker]="picker"
         formControlName="referenceDate"
         required
+        [disabled]="loading"
       />
       <mat-datepicker-toggle
         matIconSuffix
@@ -47,6 +57,7 @@
             '.placeholder' | translate
         "
         required
+        [disabled]="loading"
       />
       <mat-hint *ngIf="documentLabel === 'CPF'">{{
         'consultation_form_dialog.input_cpf.hint' | translate
@@ -91,6 +102,7 @@
         formControlName="interval"
         required
         (selectionChange)="onIntervalChange()"
+        [disabled]="loading"
       >
         <mat-option
           *ngFor="let interval of consultationInterval"
@@ -102,15 +114,22 @@
     </mat-form-field>
   </div>
   <div class="submit-buttons">
-    <button mat-raised-button matDialogClose>
+    <button
+      mat-raised-button
+      matDialogClose
+      [disabled]="loading"
+    >
       {{ 'consultation_form_dialog.actions_buttons.cancel' | translate }}
     </button>
     <button
       mat-raised-button
       type="submit"
-      [disabled]="consultationForm.invalid"
+      [disabled]="consultationForm.invalid || loading"
     >
-      {{ 'consultation_form_dialog.actions_buttons.submit' | translate }}
+      {{ loading ?
+        ('consultation_form_dialog.actions_buttons.loading' | translate) :
+        ('consultation_form_dialog.actions_buttons.submit' | translate)
+      }}
     </button>
   </div>
 </form>

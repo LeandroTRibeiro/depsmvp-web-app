@@ -1,31 +1,33 @@
 form {
+
   width: 50vw;
   @media (max-width: 678px) {
     width: 100vw;
   }
-}
 
-.input-container {
-  display: flex;
+  .input-container {
+    display: flex;
 
-  @media (max-width: 668px) {
-    flex-direction: column;
-  }
-
-  mat-form-field {
-    flex: 1;
-  }
-}
-
-.submit-buttons {
-  padding-block: 20px;
-  display: flex;
-  justify-content: flex-end;
-  gap: 20px;
-
-  button {
     @media (max-width: 668px) {
-      width: 100%;
+      flex-direction: column;
+    }
+
+    mat-form-field {
+      flex: 1;
+    }
+  }
+
+  .submit-buttons {
+    padding-block: 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+
+    button {
+      @media (max-width: 668px) {
+        width: 100%;
+      }
     }
   }
 }
+

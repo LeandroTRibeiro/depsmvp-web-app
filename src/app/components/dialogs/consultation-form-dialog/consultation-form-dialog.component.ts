@@ -22,6 +22,7 @@ export class ConsultationFormDialogComponent implements OnInit {
   consultationType = CONSULTATION_CONFIG.types;
   consultationInterval = CONSULTATION_CONFIG.intervals;
   documentLabel: string = 'CNPJ';
+  loading = false;
 
   constructor(
     private _dialog: MatDialog,
@@ -99,10 +100,14 @@ export class ConsultationFormDialogComponent implements OnInit {
   }
 
   onSubmit() {
+    this.loading = true;
     if (this.consultationForm.valid) {
       const formValue = this.consultationForm.value;
-      this._consultationService.processForm(formValue);
+      this._consultationService.processForm(formValue, () => {
+        this.loading = false;
+      });
     } else {
+      this.loading = false;
       console.log('Formulário inválido');
     }
   }

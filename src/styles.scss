@@ -16,3 +16,23 @@ body {
   backdrop-filter: blur(2px);
   background-color: rgba(0, 0, 0, 0.6);
 }
+
+.loading {
+
+  pointer-events: none;
+  cursor: not-allowed;
+
+  animation: ping 1.5s ease-in-out infinite;
+
+  @keyframes ping {
+    0% {
+      opacity: 1;
+    }
+    75% {
+      opacity: 0.3;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}

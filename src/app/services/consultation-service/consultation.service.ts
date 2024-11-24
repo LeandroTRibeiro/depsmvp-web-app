@@ -18,7 +18,7 @@ export class ConsultationService {
     private _dialog: MatDialog
   ) {}
 
-  processForm(consultationForm: any) {
+  processForm(consultationForm: any, onComplete: () => void): void {
     if (consultationForm.type === 'cpf') {
       const pepRequest: PepRequestModel = {
         cpf: consultationForm.document,
@@ -32,9 +32,11 @@ export class ConsultationService {
         next: (response) => {
           this._pepStorageService.setPeps(response);
           this._router.navigate(['/consultations/cpf']);
+          onComplete();
           this._dialog.closeAll();
         },
         error: (err) => {
+          onComplete();
           console.error('Erro na requisição para PEP:', err);
         },
       });
@@ -51,9 +53,11 @@ export class ConsultationService {
         next: (response) => {
           this._companyStorageService.setCompany(response);
           this._router.navigate(['/consultations/cnpj']);
+          onComplete();
           this._dialog.closeAll();
         },
         error: (err) => {
+          onComplete();
           console.error('Erro na requisição para Company:', err);
         },
       });
