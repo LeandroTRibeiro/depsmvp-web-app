@@ -44,7 +44,11 @@
         "action": ""
       }
     },
-    "submit_button": "Nova Consulta"
+    "submit_button": "Nova Consulta",
+    "no_data": {
+      "title": "Não encontramos nenhuma consulta registrada! \uD83D\uDCD2",
+      "description": "Você pode iniciar uma nova consulta para ver os resultados aqui."
+    }
   },
   "consultation_form_dialog": {
     "title": "Nova Consulta",
