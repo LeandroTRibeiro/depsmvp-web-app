@@ -9,8 +9,7 @@ import { PepRequestModel } from '../../../models/pepRequest.model';
 import { PepStorageService } from '../../../services/pep-storage-service/pep-storage.service';
 import { CompanyStorageService } from '../../../services/company-storage-service/company-storage.service';
 import { getDocumentValidators } from '../../../validators/document-validator';
-import { IntervalService } from '../../../services/interval.service';
-import { ConsultationService } from '../../../services/consultation.service';
+import { IntervalService } from '../../../services/interval-service/interval.service';
 import { ConsultationService } from '../../../services/consultation-service/consultation.service';
 
 @Component({
