@@ -7,6 +7,7 @@ import { Company } from '../../models/company.model';
 import { Pep } from '../../models/pep.model';
 import { PepRequestModel } from '../../models/pepRequest.model';
 import { CompanyRequestModel } from '../../models/companyRequest.model';
+import {of} from "rxjs";
 
 @Injectable({
   providedIn: 'root',

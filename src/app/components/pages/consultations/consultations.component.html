@@ -15,7 +15,13 @@
           [jsonTranslatePath]="'consultations.consultation_table.headers'"
         />
       </ng-container>
-      <table mat-table class="full-width-table" matSort aria-label="Elements">
+      <app-no-consultations *ngIf="dataSource.totalItems <= 0 && !loading" />
+      <table
+        mat-table
+        class="full-width-table"
+        matSort
+        aria-label="Elements"
+      >
         <ng-container matColumnDef="user">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>
             {{ headers.user | translate }}
@@ -86,14 +92,13 @@
     </mat-card-content>
     <mat-card-actions>
       <mat-paginator
-        #paginator
         [length]="dataSource.totalItems"
         [pageIndex]="0"
         [pageSize]="10"
         [pageSizeOptions]="[5, 10, 20, 40, 80]"
         aria-label="Select page"
       >
-      </mat-paginator>
+    </mat-paginator>
       <div class="new-consult-button-container">
         <button mat-raised-button color="primary" (click)="openDialog()">
           {{ 'consultations.submit_button' | translate }}

@@ -41,6 +41,7 @@ import { DaysToReadableFormatPipe } from './pipes/days-to-readable-format.pipe';
 import { TableSkeletonComponent } from './shared/table-skeleton/table-skeleton.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {LoadingSpinnerComponent} from "./shared/loading-spinner/loading-spinner.component";
+import { NoConsultationsComponent } from './shared/no-consultations/no-consultations.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import {LoadingSpinnerComponent} from "./shared/loading-spinner/loading-spinner.
     TableSkeletonComponent,
     LoadingSpinnerComponent,
     LoadingSpinnerComponent,
+    NoConsultationsComponent,
   ],
   imports: [
     BrowserModule,

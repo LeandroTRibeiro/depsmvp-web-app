@@ -8,6 +8,7 @@ import { PepComponent } from './components/pages/pep/pep.component';
 import {
   TableSkeletonComponent
 } from "./shared/table-skeleton/table-skeleton.component";
+import {NoConsultationsComponent} from "./shared/no-consultations/no-consultations.component";
 
 const routes: Routes = [
   {
@@ -36,7 +37,7 @@ const routes: Routes = [
   },
   {
     path: 'test',
-    component: TableSkeletonComponent,
+    component: NoConsultationsComponent,
   },
   {
     path: '**',

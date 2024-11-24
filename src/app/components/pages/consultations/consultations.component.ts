@@ -46,14 +46,15 @@ export class ConsultationsComponent implements AfterViewInit, OnInit {
   }
 
   ngAfterViewInit(): void {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-    this.table.dataSource = this.dataSource;
+    this.dataSource.sort = this.sort ?? null;
+    this.dataSource.paginator = this.paginator ?? null;
+    this.table.dataSource = this.dataSource ?? null;
 
     this.dataSource.connect().subscribe({
       next: () => this.loading = false,
       error: () => this.loading = false
     });
+
   }
 
   openDialog(): void {
