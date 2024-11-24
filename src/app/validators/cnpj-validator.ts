@@ -3,7 +3,7 @@
 export function cnpjValidator(
   control: AbstractControl
 ): ValidationErrors | null {
-  const cnpj = control.value;
+  const cnpj = control.value.replace(/\D/g, '');
 
   if (!cnpj || cnpj.length !== 14 || !/^\d{14}$/.test(cnpj)) {
     return { invalidCNPJ: true };

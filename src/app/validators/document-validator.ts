@@ -6,15 +6,15 @@ export function getDocumentValidators(type: string) {
   if (type === 'cpf') {
     return [
       Validators.required,
-      Validators.minLength(11),
-      Validators.maxLength(11),
+      Validators.minLength(14),
+      Validators.maxLength(14),
       cpfValidator,
     ];
   } else if (type === 'cnpj') {
     return [
       Validators.required,
-      Validators.minLength(14),
-      Validators.maxLength(14),
+      Validators.minLength(18),
+      Validators.maxLength(18),
       cnpjValidator,
     ];
   }

@@ -11,6 +11,7 @@ import { CompanyStorageService } from '../../../services/company-storage-service
 import { getDocumentValidators } from '../../../validators/document-validator';
 import { IntervalService } from '../../../services/interval-service/interval.service';
 import { ConsultationService } from '../../../services/consultation-service/consultation.service';
+import {CnfCnpjMaskService} from "../../../services/masks/cnf-cnpj-mask.service";
 
 @Component({
   selector: 'app-consultation-form-dialog',
@@ -28,7 +29,8 @@ export class ConsultationFormDialogComponent implements OnInit {
     private _dialog: MatDialog,
     private _fb: FormBuilder,
     private _intervalService: IntervalService,
-    private _consultationService: ConsultationService
+    private _consultationService: ConsultationService,
+    private _maskService: CnfCnpjMaskService
   ) {
     this.consultationForm = this._fb.group({
       type: ['cnpj', [Validators.required]],
@@ -59,6 +61,7 @@ export class ConsultationFormDialogComponent implements OnInit {
     if (!documentControl) return;
 
     documentControl.setValidators(getDocumentValidators(type));
+    documentControl.setValue('');
     this.documentLabel = type.toUpperCase();
     documentControl.updateValueAndValidity();
   }
@@ -70,6 +73,17 @@ export class ConsultationFormDialogComponent implements OnInit {
       this.openCustomIntervalDialog();
     }
   }
+
+  applyMask(event: Event, documentLabel: string): void {
+    const input = event.target as HTMLInputElement;
+
+    const maskedValue = this._maskService.applyMask(input.value, documentLabel);
+
+    input.value = maskedValue;
+
+    this.consultationForm.get('document')?.setValue(maskedValue, { emitEvent: false });
+  }
+
 
   openCustomIntervalDialog() {
     const dialogRef = this._dialog.open(ConsultationCustomIntervalComponent, {
@@ -102,7 +116,9 @@ export class ConsultationFormDialogComponent implements OnInit {
   onSubmit() {
     this.loading = true;
     if (this.consultationForm.valid) {
-      const formValue = this.consultationForm.value;
+      const formValue = { ...this.consultationForm.value };
+      formValue.document = formValue.document?.replace(/\D/g, '');
+
       this._consultationService.processForm(formValue, () => {
         this.loading = false;
       });

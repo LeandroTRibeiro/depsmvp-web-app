@@ -3,7 +3,7 @@
 export function cpfValidator(
   control: AbstractControl
 ): ValidationErrors | null {
-  const cpf = control.value;
+  const cpf = control.value.replace(/\D/g, '');
 
   if (!cpf || cpf.length !== 11 || !/^\d{11}$/.test(cpf)) {
     return { invalidCPF: true };

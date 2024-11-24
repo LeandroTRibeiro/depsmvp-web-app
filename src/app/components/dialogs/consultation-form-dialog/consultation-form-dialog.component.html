@@ -51,6 +51,7 @@
         type="text"
         matInput
         formControlName="document"
+        inputmode="numeric"
         [placeholder]="
           'consultation_form_dialog.input_' +
             documentLabel.toLowerCase() +
@@ -58,6 +59,8 @@
         "
         required
         [disabled]="loading"
+
+        (input)="applyMask($event, documentLabel)"
       />
       <mat-hint *ngIf="documentLabel === 'CPF'">{{
         'consultation_form_dialog.input_cpf.hint' | translate
