@@ -39,6 +39,7 @@ export class PepComponent implements OnInit {
   ];
   columnsToDisplayWithExpand = [...this.displayedColumns, 'expand'];
   expandedElement: Pep | null = null;
+  loading = true;
 
   constructor(
     private _apiService: ApiService,
@@ -52,11 +53,12 @@ export class PepComponent implements OnInit {
       this._apiService
         .getPepByConsultationId(Number(this.id))
         .subscribe((response) => {
-          console.log(response);
           this.peps = response;
+          this.loading = false;
         });
     } else {
       this.peps = this._pepStorageService.getPeps();
+      this.loading = false;
     }
   }
 

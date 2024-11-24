@@ -1,5 +1,6 @@
 <main>
-  <mat-card>
+  <app-loading-spinner *ngIf="loading" />
+  <mat-card *ngIf="!loading">
     <mat-card-title>
       {{ 'pep.title' | translate }}
     </mat-card-title>

@@ -14,6 +14,7 @@ export class CompanyComponent implements OnInit {
   company: Company | null = null;
   id: string | null = null;
   mapIframeSrc: SafeResourceUrl | null = null;
+  loading = true;
 
   constructor(
     private _apiService: ApiService,
@@ -31,6 +32,7 @@ export class CompanyComponent implements OnInit {
         .subscribe((response) => {
           this.company = response;
           this.createIFrame();
+          this.loading = false;
         });
     } else {
       this.company = this._companyStorageService.getCompany();

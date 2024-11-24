@@ -39,6 +39,8 @@ import { CpfCnpjFormatPipe } from './pipes/cpf-cnpj-format.pipe';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { DaysToReadableFormatPipe } from './pipes/days-to-readable-format.pipe';
 import { TableSkeletonComponent } from './shared/table-skeleton/table-skeleton.component';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {LoadingSpinnerComponent} from "./shared/loading-spinner/loading-spinner.component";
 
 @NgModule({
   declarations: [
@@ -56,6 +58,8 @@ import { TableSkeletonComponent } from './shared/table-skeleton/table-skeleton.c
     CpfCnpjFormatPipe,
     DaysToReadableFormatPipe,
     TableSkeletonComponent,
+    LoadingSpinnerComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -87,6 +91,7 @@ import { TableSkeletonComponent } from './shared/table-skeleton/table-skeleton.c
     FormsModule,
     HttpClientModule,
     MatExpansionModule,
+    MatProgressSpinnerModule,
   ],
   providers: [
     {
