@@ -6,11 +6,12 @@ import { CONSULTATION_CONFIG } from './consultation-form-dialog-config';
 import { ApiService } from '../../../services/api-service/api.service';
 import { Router } from '@angular/router';
 import { PepRequestModel } from '../../../models/pepRequest.model';
-import { PepStorageService } from '../../../services/pep-storage-service/pep-storage.service';
+import { PepStorageService } from '../../../services/pep-storage.service';
+import { CompanyStorageService } from '../../../services/company-storage.service';
 import { CompanyStorageService } from '../../../services/company-storage-service/company-storage.service';
 import { getDocumentValidators } from '../../../validators/document-validator';
-import { IntervalService } from '../../../services/interval-service/interval.service';
-import { ConsultationService } from '../../../services/consultation-service/consultation.service';
+import { IntervalService } from '../../../services/interval.service';
+import { ConsultationService } from '../../../services/consultation.service';
 
 @Component({
   selector: 'app-consultation-form-dialog',
