@@ -11,6 +11,7 @@ import { CompanyStorageService } from '../../../services/company-storage-service
 import { getDocumentValidators } from '../../../validators/document-validator';
 import { IntervalService } from '../../../services/interval.service';
 import { ConsultationService } from '../../../services/consultation.service';
+import { ConsultationService } from '../../../services/consultation-service/consultation.service';
 
 @Component({
   selector: 'app-consultation-form-dialog',
