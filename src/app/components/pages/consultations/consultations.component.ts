@@ -9,7 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConsultationFormDialogComponent } from '../../dialogs/consultation-form-dialog/consultation-form-dialog.component';
 import { ApiService } from '../../../services/api-service/api.service';
 import { Router } from '@angular/router';
-import {Observable} from "rxjs";
+import {finalize, Observable} from "rxjs";
 import {map} from "rxjs/operators";
 
 @Component({
@@ -37,8 +37,6 @@ export class ConsultationsComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit(): void {
-
-    console.log(this.loading);
     this._translate
       .get('consultations.consultation_table.headers')
       .subscribe((translations) => {
@@ -52,12 +50,9 @@ export class ConsultationsComponent implements AfterViewInit, OnInit {
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
 
-    this.sort.sortChange.subscribe(() => {
-      this.dataSource.getSortedData(this.dataSource.data);
-    });
-
-    this.dataSource.dataSubject.subscribe((updatedData) => {
-      this.table.renderRows();
+    this.dataSource.connect().subscribe({
+      next: () => this.loading = false,
+      error: () => this.loading = false
     });
   }
 
@@ -74,9 +69,7 @@ export class ConsultationsComponent implements AfterViewInit, OnInit {
     pageNumber: number,
     pageSize: number
   ): Observable<Consultation[]> {
-
     this.loading = true;
-
     return this._apiService.getConsults(pageNumber, pageSize).pipe(
       map((response) => {
         this.dataSource.data = response.data;
@@ -84,8 +77,6 @@ export class ConsultationsComponent implements AfterViewInit, OnInit {
         this.paginator!.length = this.dataSource.totalItems;
         const sortedData = this.dataSource.getSortedData([...this.dataSource.data]);
         this.dataSource.dataSubject.next(sortedData);
-        this.loading = false;
-        console.log(this.loading);
         return sortedData;
       })
     );

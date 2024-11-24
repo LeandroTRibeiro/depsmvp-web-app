@@ -4,7 +4,6 @@ import { MatSort } from '@angular/material/sort';
 import { map, switchMap, startWith, tap } from 'rxjs/operators';
 import { Observable, merge, BehaviorSubject } from 'rxjs';
 import { Consultation } from '../../../models/consultation.model';
-import { ApiService } from '../../../services/api-service/api.service';
 
 export class ConsultationsDatasource extends DataSource<Consultation> {
   dataSubject = new BehaviorSubject<Consultation[]>([]);
@@ -20,7 +19,6 @@ export class ConsultationsDatasource extends DataSource<Consultation> {
   }
 
   connect(): Observable<Consultation[]> {
-
     if (this.paginator && this.sort) {
       return merge(
         this.paginator.page,
