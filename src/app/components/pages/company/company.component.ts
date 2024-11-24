@@ -35,6 +35,7 @@ export class CompanyComponent implements OnInit {
           this.loading = false;
         });
     } else {
+      this.loading = false;
       this.company = this._companyStorageService.getCompany();
       this.createIFrame();
     }
