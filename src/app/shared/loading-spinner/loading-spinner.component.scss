@@ -1,0 +1,11 @@
+.spinner-container {
+  width: 100%;
+  height: calc(100dvh - 64px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 678px) {
+    height: calc(100dvh - 56px);
+  }
+}
